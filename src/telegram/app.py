@@ -34,9 +34,13 @@ async def turn_off_server(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def bot_info(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.effective_message.reply_text(f'1. Включение сервера требует где-то секунд 15-20, это норм \n'
-                                              f'2. Для управления сервером нужно написать в консоль `fake_rcon_password {rcon}` \n'
-                                              f'3. Для режима разминки надо написать fake_rcon exec w')
+    try:
+        await update.effective_message.reply_text(f"""1 Включение сервера требует где\\-то секунд 15\\-20, это норм \n"""
+                                                  f'2 Для управления сервером нужно написать в консоль `fake\\_rcon\\_password {rcon}` \n'
+                                                  f'3 Для режима разминки надо написать `fake\\_rcon exec w`',
+                                                  parse_mode='MarkdownV2')
+    except:
+        logger.error('Не сработало')
 
 
 def main():
