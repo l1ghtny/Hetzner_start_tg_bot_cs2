@@ -38,6 +38,8 @@ async def shutdown_server():
     client = Client(token=hetzner_token)
     server = client.servers.get_by_id(server_id)
     server.power_off()
-    await asyncio.sleep(15)
+    await asyncio.sleep(5)
+    server = client.servers.get_by_id(server_id)
     server_status = server.status
+    logger.info(server_status)
     return server_status

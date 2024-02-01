@@ -17,9 +17,8 @@ async def start_cs2_server_full(update: Update, context: ContextTypes.DEFAULT_TY
     await asyncio.sleep(15)
     result = await start_cs2_server()
     if result:
-        await message.edit_text(f'Сервер включен и готов к использованию. Напоминаю ip: \n'
-                                f'connect {ip}:27015, password {server_pass} \n'
-                                f'Не забудь выключить сервер командой /shutdown как закончишь')
+        await message.edit_text(f"""Сервер включен и готов к использованию\\. \nНапоминаю ip `connect {ip}:27015; password {server_pass}` \nНе забудь выключить сервер командой /shutdown как закончишь""",
+                                                  parse_mode='MarkdownV2')
         logger.info('Server is on, message sent')
     else:
         await message.edit_text('Чет сломалось, сорян')
@@ -36,9 +35,8 @@ async def turn_off_server(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def bot_info(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         await update.effective_message.reply_text(f"""1 Включение сервера требует где\\-то секунд 15\\-20, это норм \n"""
-                                                  f'2 Для управления сервером нужно написать в консоль `fake\\_rcon\\_password {rcon}` \n'
-                                                  f'3 Для режима разминки надо написать `fake\\_rcon exec w`',
-                                                  parse_mode='MarkdownV2')
+f'2 Для управления сервером нужно написать в консоль `fake\\_rcon\\_password {rcon}` \n'
+f'3 Для режима разминки надо написать `fake\\_rcon exec w`', parse_mode='MarkdownV2')
     except:
         logger.error('Не сработало')
 
