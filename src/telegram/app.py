@@ -35,7 +35,7 @@ async def turn_off_server(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def bot_info(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.effective_message.reply_text(f'1. Включение сервера требует где-то секунд 15-20, это норм \n'
-                                              f'2. Для управления сервером нужно написать в консоль ``fake_rcon_password {rcon}`` \n'
+                                              f'2. Для управления сервером нужно написать в консоль `fake_rcon_password {rcon}` \n'
                                               f'3. Для режима разминки надо написать fake_rcon exec w')
 
 
@@ -44,9 +44,11 @@ def main():
 
     main_start_handler = CommandHandler('start_server', start_cs2_server_full)
     main_shutdown_handler = CommandHandler('shutdown', turn_off_server)
+    main_info_handler = CommandHandler('info', bot_info)
 
     application.add_handler(main_start_handler)
     application.add_handler(main_shutdown_handler)
+    application.add_handler(main_info_handler)
 
     logger.info(f'bot started at {datetime.datetime.now()}')
 
