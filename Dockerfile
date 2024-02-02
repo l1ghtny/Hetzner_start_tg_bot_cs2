@@ -1,6 +1,6 @@
 FROM python:3
 
-WORKDIR /home/tg-server-bot/
+WORKDIR /home/tgserver/
 RUN mkdir logs
 
 COPY requirements.txt ./
