@@ -1,8 +1,5 @@
 FROM python:3
 
-LABEL authors="lightny"
-
-
 WORKDIR /home/tg-server-bot/
 RUN mkdir logs
 
