@@ -1,5 +1,5 @@
 from logging.config import dictConfig
-from src.logs_setup.vars import path
+# from src.logs_setup.vars import path
 import logging
 
 LOGGING_CONFIG = {
@@ -30,7 +30,7 @@ LOGGING_CONFIG = {
             "class": "src.logs_setup.logger_settings.MyTimedRotatingFileHandler",
             "when": "h",
             "interval": 12,
-            "filename": f"{path}/main_log.log",
+            "filename": "./logs/main_log.log",
             "encoding": "utf-8"
         },
     },
