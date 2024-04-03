@@ -26,11 +26,17 @@ async def start_cs2_server():
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         client.connect(hostname=ip, port=22, username=login, password=password)
         logger.info('ssh connected')
-        _stdin, _stdout, _stderr = client.exec_command(command_main)
-        client.close()
-        return True
-    except:
+        try:
+            _stdin, _stdout, _stderr = client.exec_command(command_main)
+            print(_stdout.read())
+            client.close()
+            return True
+        except hcloud.APIException or hcloud.HCloudException as e:
+            logger.error(e)
+            return False
+    except paramiko.ssh_exception as e:
         logger.info('Error')
+        logger.error(e)
         return False
 
 
